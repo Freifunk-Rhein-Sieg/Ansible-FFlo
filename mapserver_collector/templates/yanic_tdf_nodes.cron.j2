@@ -1,0 +1,23 @@
+#
+# cron.d/yanic_collector -- schedules periodic wget of yanic .json data
+#
+# Copyright © technik <technik@freifunk-siegburg.de>
+# distributed under the terms of GPL 2.0
+#
+
+# gw's tdf
+# tdf1.freifunk-troisdorf.de
+*/2 * * * * root wget -U yanic_collector -q http://tdf1.freifunk-troisdorf.de/graph.json -O /opt/data/tdf4/graph.json; cp /opt/data/tdf4/graph.json /opt/data/tdf4/tdf/graph.json >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q http://tdf1.freifunk-troisdorf.de/meshviewer.json -O /opt/data/tdf4/meshviewer.json; cp /opt/data/tdf4/meshviewer.json /opt/data/tdf4/tdf/meshviewer.json >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q http://tdf1.freifunk-troisdorf.de/nodelist.json -O /opt/data/tdf4/nodelist.json; cp /opt/data/tdf4/nodelist.json /opt/data/tdf4/tdf/nodelist.json  >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q http://tdf1.freifunk-troisdorf.de/nodes.json -O /opt/data/tdf4/nodes.json; /opt/data/jsoncheck.pl /opt/data/tdf4/nodes.json /opt/data/tdf4/tdf/nodes.json; /opt/data/nodesv2tov1.pl /opt/data/tdf4/tdf/nodes.json /opt/data/merged/tdf_nodes_v1.json >/dev/null 2>&1
+# inn1.freifunk-troisdorf.de
+*/2 * * * * root wget -U yanic_collector -q http://inn1.freifunk-troisdorf.de/graph.json -O /opt/data/tdf5/graph.json; cp /opt/data/tdf5/graph.json /opt/data/tdf5/inn/graph.json >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q http://inn1.freifunk-troisdorf.de/meshviewer.json -O /opt/data/tdf5/meshviewer.json; cp /opt/data/tdf5/meshviewer.json /opt/data/tdf5/inn/meshviewer.json >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q http://inn1.freifunk-troisdorf.de/nodelist.json -O /opt/data/tdf5/nodelist.json; cp /opt/data/tdf5/nodelist.json /opt/data/tdf5/inn/nodelist.json >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q http://inn1.freifunk-troisdorf.de/nodes.json -O /opt/data/tdf5/nodes.json; /opt/data/jsoncheck.pl /opt/data/tdf5/nodes.json /opt/data/tdf5/inn/nodes.json; /opt/data/nodesv2tov1.pl /opt/data/tdf5/inn/nodes.json /opt/data/merged/inn_nodes_v1.json >/dev/null 2>&1
+# flu1.freifunk-troisdorf.de
+*/2 * * * * root wget -U yanic_collector -q http://flu1.freifunk-troisdorf.de/graph.json -O /opt/data/tdf6/graph.json; cp /opt/data/tdf6/graph.json /opt/data/tdf6/flu/graph.json >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q http://flu1.freifunk-troisdorf.de/meshviewer.json -O /opt/data/tdf6/meshviewer.json; cp /opt/data/tdf6/meshviewer.json /opt/data/tdf6/flu/meshviewer.json >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q http://flu1.freifunk-troisdorf.de/nodelist.json -O /opt/data/tdf6/nodelist.json; cp /opt/data/tdf6/nodelist.json /opt/data/tdf6/flu/nodelist.json >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q http://flu1.freifunk-troisdorf.de/nodes.json -O /opt/data/tdf6/nodes.json; /opt/data/jsoncheck.pl /opt/data/tdf6/nodes.json /opt/data/tdf6/flu/nodes.json ;/opt/data/nodesv2tov1.pl /opt/data/tdf6/flu/nodes.json /opt/data/merged/flu_nodes_v1.json >/dev/null 2>&1

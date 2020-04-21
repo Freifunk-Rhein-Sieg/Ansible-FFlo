@@ -1,0 +1,62 @@
+#
+# cron.d/yanic_collector -- schedules periodic wget of yanic .json data
+#
+# Copyright © technik <technik@freifunk-siegburg.de>
+# distributed under the terms of GPL 2.0
+#
+
+##########
+# gw's lo
+##########
+#
+# lohmar1
+#
+# 01
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/01_graph.json -O /opt/data/lohmar1/01_graph.json; if [ -s /opt/data/lohmar1/01_graph.json ]; then cp /opt/data/lohmar1/01_graph.json /opt/data/lohmar1/domain01/graph.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/01_meshviewer.json -O /opt/data/lohmar1/01_meshviewer.json; if [ -s /opt/data/lohmar1/01_meshviewer.json ]; then /opt/data/replace_wrong_geolocation_su.pl /opt/data/lohmar1/01_meshviewer.json; cp /opt/data/lohmar1/01_meshviewer.json /opt/data/lohmar1/domain01/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/01_nodelist.json -O /opt/data/lohmar1/01_nodelist.json; if [ -s /opt/data/lohmar1/01_nodelist.json ]; then /opt/data/replace_wrong_geolocation_su.pl /opt/data/lohmar1/01_nodelist.json; cp /opt/data/lohmar1/01_nodelist.json /opt/data/lohmar1/domain01/nodelist.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/01_nodes.json -O /opt/data/lohmar1/01_nodes.json; if [ -s /opt/data/lohmar1/01_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/lohmar1/01_nodes.json /opt/data/lohmar1/domain01/nodes.json; fi >/dev/null 2>&1
+# 01 old v1 Versions for MobileMeshViewer
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/01_graph_v1.json -O /opt/data/lohmar1/01_graph_v1.json; if [ -s /opt/data/lohmar1/01_graph_v1.json ]; then cp /opt/data/lohmar1/01_graph_v1.json /opt/data/lohmar1/domain01/graph_v1.json; cp /opt/data/lohmar1/domain01/graph_v1.json /opt/data/merged/graph_v1.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/01_nodes_v1.json -O /opt/data/lohmar1/01_nodes_v1.json; if [ -s /opt/data/lohmar1/01_nodes.json ]; then /opt/data/replace_wrong_geolocation_su.pl /opt/data/lohmar1/01_nodes.json; /opt/data/jsoncheck.pl /opt/data/lohmar1/01_nodes_v1.json /opt/data/lohmar1/domain01/nodes_v1.json; cp /opt/data/lohmar1/domain01/nodes_v1.json /opt/data/merged/nodes_v1.json; fi >/dev/null 2>&1
+# 03
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/03_graph.json -O /opt/data/lohmar1/03_graph.json; if [ -s /opt/data/lohmar1/03_graph.json ]; then cp /opt/data/lohmar1/03_graph.json /opt/data/lohmar1/domain03/graph.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/03_meshviewer.json -O /opt/data/lohmar1/03_meshviewer.json; if [ -s /opt/data/lohmar1/03_meshviewer.json ]; then cp /opt/data/lohmar1/03_meshviewer.json /opt/data/lohmar1/domain03/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/03_nodelist.json -O /opt/data/lohmar1/03_nodelist.json; if [ -s /opt/data/lohmar1/03_nodelist.json ]; then cp /opt/data/lohmar1/03_nodelist.json /opt/data/lohmar1/domain03/nodelist.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/03_nodes.json -O /opt/data/lohmar1/03_nodes.json; if [ -s /opt/data/lohmar1/03_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/lohmar1/03_nodes.json /opt/data/lohmar1/domain03/nodes.json; fi  >/dev/null 2>&1
+# 03 old v1 Versions for MobileMeshViewer
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/03_graph_v1.json -O /opt/data/lohmar1/03_graph_v1.json; if [ -s /opt/data/lohmar1/03_graph_v1.json ]; then cp /opt/data/lohmar1/03_graph_v1.json /opt/data/lohmar1/domain03/graph_v1.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar1.freifunk-rhein-sieg.net/03_nodes_v1.json -O /opt/data/lohmar1/03_nodes_v1.json; if [ -s /opt/data/lohmar1/03_nodes_v1.json ]; then /opt/data/jsoncheck.pl /opt/data/lohmar1/03_nodes_v1.json /opt/data/lohmar1/domain03/nodes_v1.json; fi  >/dev/null 2>&1
+#
+# lohmar2
+#
+# 05
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar2.freifunk-rhein-sieg.net/05_graph.json -O /opt/data/lohmar2/05_graph.json; if [ -s /opt/data/lohmar2/05_graph.json ]; then cp /opt/data/lohmar2/05_graph.json /opt/data/lohmar2/domain05/graph.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar2.freifunk-rhein-sieg.net/05_meshviewer.json -O /opt/data/lohmar2/05_meshviewer.json; if [ -s /opt/data/lohmar2/05_meshviewer.json ]; then cp /opt/data/lohmar2/05_meshviewer.json /opt/data/lohmar2/domain05/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar2.freifunk-rhein-sieg.net/05_nodelist.json -O /opt/data/lohmar2/05_nodelist.json; if [ -s /opt/data/lohmar2/05_nodelist.json ]; then cp /opt/data/lohmar2/05_nodelist.json /opt/data/lohmar2/domain05/nodelist.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar2.freifunk-rhein-sieg.net/05_nodes.json -O /opt/data/lohmar2/05_nodes.json; if [ -s /opt/data/lohmar2/05_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/lohmar2/05_nodes.json /opt/data/lohmar2/domain05/nodes.json; fi >/dev/null 2>&1
+# 05 old v1 Versions for MobileMeshViewer
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar2.freifunk-rhein-sieg.net/05_graph_v1.json -O /opt/data/lohmar2/05_graph_v1.json; if [ -s /opt/data/lohmar2/05_graph_v1.json ]; then cp /opt/data/lohmar2/05_graph_v1.json /opt/data/lohmar2/domain05/graph_v1.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar2.freifunk-rhein-sieg.net/05_nodes_v1.json -O /opt/data/lohmar2/05_nodes_v1.json; if [ -s /opt/data/lohmar2/05_nodes_v1.json ]; then /opt/data/jsoncheck.pl /opt/data/lohmar2/05_nodes_v1.json /opt/data/lohmar2/domain05/nodes_v1.json; fi >/dev/null 2>&1
+#
+# lohmar3
+#
+# 04
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/04_graph.json -O /opt/data/lohmar3/04_graph.json; if [ -s /opt/data/lohmar3/04_graph.json ]; then cp /opt/data/lohmar3/04_graph.json /opt/data/lohmar3/domain04/graph.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/04_meshviewer.json -O /opt/data/lohmar3/04_meshviewer.json; if [ -s /opt/data/lohmar3/04_meshviewer.json ]; then cp /opt/data/lohmar3/04_meshviewer.json /opt/data/lohmar3/domain04/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/04_meshviewer.json -O /opt/data/lohmar3/04_meshviewer.json; if [ -s /opt/data/lohmar3/04_meshviewer.json ]; then cp /opt/data/lohmar3/04_meshviewer.json /opt/data/lohmar3/domain04/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/04_nodelist.json -O /opt/data/lohmar3/04_nodelist.json; if [ -s /opt/data/lohmar3/04_nodelist.json ]; then cp /opt/data/lohmar3/04_nodelist.json /opt/data/lohmar3/domain04/nodelist.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/04_nodes.json -O /opt/data/lohmar3/04_nodes.json; if [ -s /opt/data/lohmar3/04_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/lohmar3/04_nodes.json /opt/data/lohmar3/domain04/nodes.json; fi >/dev/null 2>&1
+# 04 old v1 Versions for MobileMeshViewer
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/04_graph_v1.json -O /opt/data/lohmar3/04_graph_v1.json; if [ -s /opt/data/lohmar3/04_graph_v1.json ]; then cp /opt/data/lohmar3/04_graph_v1.json /opt/data/lohmar3/domain04/graph_v1.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/04_nodes_v1.json -O /opt/data/lohmar3/04_nodes_v1.json; if [ -s /opt/data/lohmar3/04_nodes_v1.json ]; then /opt/data/jsoncheck.pl /opt/data/lohmar3/04_nodes_v1.json /opt/data/lohmar3/domain04/nodes_v1.json; fi >/dev/null 2>&1
+# 07
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/07_graph.json -O /opt/data/lohmar3/07_graph.json; if [ -s /opt/data/lohmar3/07_graph.json ]; then cp /opt/data/lohmar3/07_graph.json /opt/data/lohmar3/domain07/graph.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/07_meshviewer.json -O /opt/data/lohmar3/07_meshviewer.json; if [ -s /opt/data/lohmar3/07_meshviewer.json]; then cp /opt/data/lohmar3/07_meshviewer.json /opt/data/lohmar3/domain07/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/07_nodelist.json -O /opt/data/lohmar3/07_nodelist.json; if [ -s /opt/data/lohmar3/07_nodelist.json ]; then cp /opt/data/lohmar3/07_nodelist.json /opt/data/lohmar3/domain07/nodelist.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/07_nodes.json -O /opt/data/lohmar3/07_nodes.json; if [ -s /opt/data/lohmar3/07_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/lohmar3/07_nodes.json /opt/data/lohmar3/domain07/nodes.json; fi >/dev/null 2>&1
+# 11
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/11_graph.json -O /opt/data/lohmar3/11_graph.json; if [ -s /opt/data/lohmar3/11_graph.json ]; then cp /opt/data/lohmar3/11_graph.json /opt/data/lohmar3/domain11/graph.json; fi  >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/11_meshviewer.json -O /opt/data/lohmar3/11_meshviewer.json; if [ -s /opt/data/lohmar3/11_meshviewer.json ]; then cp /opt/data/lohmar3/11_meshviewer.json /opt/data/lohmar3/domain11/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/11_nodelist.json -O /opt/data/lohmar3/11_nodelist.json; cp if [ -s /opt/data/lohmar3/11_nodelist.json ]; then /opt/data/lohmar3/11_nodelist.json /opt/data/lohmar3/domain11/nodelist.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://lohmar3.freifunk-rhein-sieg.net/11_nodes.json -O /opt/data/lohmar3/11_nodes.json; if [ -s /opt/data/lohmar3/11_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/lohmar3/11_nodes.json /opt/data/lohmar3/domain11/nodes.json; fi >/dev/null 2>&1
