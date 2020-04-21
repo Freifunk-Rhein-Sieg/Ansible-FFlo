@@ -145,8 +145,23 @@
     owner: root
     group: root
 
-- name: yaniccollectorcron
-  template: src=yanic_collector.cron.j2 dest=/etc/cron.d/yanic_collector
+- name: yaniccollectorcronlohmar
+  template: src=yanic_lohmar_nodes.cron.j2 dest=/etc/cron.d/yanic_lohmar_nodes
+  notify:
+  - reload cron
+
+- name: yaniccollectorcronsiegburg
+  template: src=yanic_siegburg_nodes.cron.j2 dest=/etc/cron.d/yanic_siegburg_nodes
+  notify:
+  - reload cron
+
+- name: yaniccollectorcrontdf
+  template: src=yanic_tdf_nodes.cron.j2 dest=/etc/cron.d/yanic_tdf_nodes
+  notify:
+  - reload cron
+
+- name: yaniccollectorcronvoreifel
+  template: src=yanic_voreifel_nodes.cron.j2 dest=/etc/cron.d/yanic_voreifel_nodes
   notify:
   - reload cron
 
