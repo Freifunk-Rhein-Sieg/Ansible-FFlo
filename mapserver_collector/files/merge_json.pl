@@ -17,68 +17,52 @@ my $json_graph_file = '/opt/data/merged/merged_graph_v1.json';
 my $json_nodelist_file = '/opt/data/merged/merged_nodelist.json';
 my %sub_domains = (
         'lo-lo'         => {
-            'nodes' => 'http://lohmar1.freifunk-rhein-sieg.net/03_nodes_v1.json',
-            'graph' => 'http://lohmar1.freifunk-rhein-sieg.net/03_graph_v1.json'
+            'nodes' => 'http://lohmar1.ffrsk.de/03_nodes_v1.json',
+            'graph' => 'http://lohmar1.ffrsk.de/03_graph_v1.json'
             },
         'lo-su'         => {
-                'nodes' => 'http://lohmar1.freifunk-rhein-sieg.net/01_nodes_v1.json',
-                'graph' => 'http://lohmar1.freifunk-rhein-sieg.net/01_graph_v1.json'
+                'nodes' => 'http://lohmar1.ffrsk.de/01_nodes_v1.json',
+                'graph' => 'http://lohmar1.ffrsk.de/01_graph_v1.json'
                 },
         'lo-snw'            => {
-            'nodes' => 'http://lohmar2.freifunk-rhein-sieg.net/05_nodes_v1.json',
-            'graph' => 'http://lohmar2.freifunk-rhein-sieg.net/05_graph_v1.json'
+            'nodes' => 'http://lohmar2.ffrsk.de/05_nodes_v1.json',
+            'graph' => 'http://lohmar2.ffrsk.de/05_graph_v1.json'
             },
         'lo-sa'            => {
-            'nodes' => 'http://lohmar3.freifunk-rhein-sieg.net/04_nodes_v1.json',
-            'graph' => 'http://lohmar3.freifunk-rhein-sieg.net/04_graph_v1.json'
+            'nodes' => 'http://lohmar3.ffrsk.de/04_nodes_v1.json',
+            'graph' => 'http://lohmar3.ffrsk.de/04_graph_v1.json'
             },
         'lo-nk'            => {
-            'nodes' => 'http://lohmar3.freifunk-rhein-sieg.net/07_nodes_v1.json',
-            'graph' => 'http://lohmar3.freifunk-rhein-sieg.net/07_graph_v1.json'
+            'nodes' => 'http://lohmar3.ffrsk.de/07_nodes_v1.json',
+            'graph' => 'http://lohmar3.ffrsk.de/07_graph_v1.json'
             },
         'lo-ak'            => {
-            'nodes' => 'http://lohmar3.freifunk-rhein-sieg.net/11_nodes_v1.json',
-            'graph' => 'http://lohmar3.freifunk-rhein-sieg.net/11_graph_v1.json'
+            'nodes' => 'http://lohmar3.ffrsk.de/11_nodes_v1.json',
+            'graph' => 'http://lohmar3.ffrsk.de/11_graph_v1.json'
             },
-        #    'su-su'         => {
-        #            'nodes' => 'http://fgw02.freifunk-siegburg.de/01_nodes_v1.json',
-        #            'graph' => 'http://fgw02.freifunk-siegburg.de/01_graph_v1.json'
-        #    },
-        'su-lo'         => {
-                'nodes' => 'http://fgw02.freifunk-siegburg.de/03_nodes_v1.json',
-                'graph' => 'http://fgw02.freifunk-siegburg.de/03_graph_v1.json'
+        'su-inn'         => {
+                    'nodes' => 'http://siegburg1.ffrsk.de/01_nodes_v1.json',
+                    'graph' => 'http://siegburg1.ffrsk.de/01_graph_v1.json'
+            },
+        'su-uml'         => {
+                'nodes' => 'http://siegburg2.ffrsk.de/02_nodes_v1.json',
+                'graph' => 'http://siegburg2.ffrsk.de/02_graph_v1.json'
         },
         'su-snw'            => {
-                'nodes' => 'http://fgw03.freifunk-siegburg.de/05_nodes_v1.json',
-                'graph' => 'http://fgw03.freifunk-siegburg.de/05_graph_v1.json'
-        },
-        'su-sa'            => {
-                'nodes' => 'http://fgw03.freifunk-siegburg.de/04_nodes_v1.json',
-                'graph' => 'http://fgw03.freifunk-siegburg.de/04_graph_v1.json'
-        },
-        'su-nk'            => {
-                'nodes' => 'http://fgw01.freifunk-siegburg.de/07_nodes_v1.json',
-                'graph' => 'http://fgw01.freifunk-siegburg.de/07_graph_v1.json'
-        },
-        'su-ak'            => {
-                'nodes' => 'http://fgw04.freifunk-siegburg.de/11_nodes_v1.json',
-                'graph' => 'http://fgw04.freifunk-siegburg.de/11_graph_v1.json'
-        },
-        'su-rhb'            => {
-                'nodes' => 'http://fgw04.freifunk-siegburg.de/14_nodes_v1.json',
-                'graph' => 'http://fgw04.freifunk-siegburg.de/14_graph_v1.json'
+                'nodes' => 'http://siegburg2.ffrsk.de/05_nodes_v1.json',
+                'graph' => 'http://siegburg2.ffrsk.de/05_graph_v1.json'
         },
         'tdf-tdf'            => {
-                'nodes' => 'https://map.freifunk-rhein-sieg.net/data/merged/tdf_nodes_v1.json',
-                'graph' => 'https://map.freifunk-rhein-sieg.net/data/tdf4/tdf/graph.json'
+                'nodes' => 'https://map.ffrsk.de/data/merged/tdf_nodes_v1.json',
+                'graph' => 'https://map.ffrsk.de/data/tdf4/tdf/graph.json'
         },
         'tdf-inn'            => {
-                'nodes' => 'https://map.freifunk-rhein-sieg.net/data/merged/inn_nodes_v1.json',
-                'graph' => 'https://map.freifunk-rhein-sieg.net/data/tdf5/inn/graph.json'
+                'nodes' => 'https://map.ffrsk.de/data/merged/inn_nodes_v1.json',
+                'graph' => 'https://map.ffrsk.de/data/tdf5/inn/graph.json'
         },
         'tdf-flu'            => {
-                'nodes' => 'https://map.freifunk-rhein-sieg.net/data/merged/flu_nodes_v1.json',
-                'graph' => 'https://map.freifunk-rhein-sieg.net/data/tdf6/flu/graph.json'
+                'nodes' => 'https://map.ffrsk.de/data/merged/flu_nodes_v1.json',
+                'graph' => 'https://map.ffrsk.de/data/tdf6/flu/graph.json'
         }
 
 );
@@ -216,3 +200,4 @@ sub get_sub_node_json {
         }; warn() if $@;
         return $return;
 }
+
