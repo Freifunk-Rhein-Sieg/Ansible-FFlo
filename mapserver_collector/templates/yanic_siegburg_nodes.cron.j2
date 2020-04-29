@@ -1,1 +1,38 @@
+#
+# cron.d/yanic_collector -- schedules periodic wget of yanic .json data
+#
+# Copyright © technik <technik@ffrsk.de>
+# distributed under the terms of GPL 2.0
+#
+
+#########
+# new gw's su
+#########
+# siegburg1
+# 01
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg1.ffrsk.de/01_graph.json -O /opt/data/siegburg1/01_graph.json; if -s [ /opt/data/siegburg1/01_graph.json ]; then cp /opt/data/siegburg1/01_graph.json /opt/data/siegburg1/domain01/graph.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg1.ffrsk.de/01_meshviewer.json -O /opt/data/siegburg1/01_meshviewer.json; if [ -s /opt/data/siegburg1/01_meshviewer.json ]; then /opt/data/replace_wrong_geolocation_su.pl /opt/data/siegburg1/01_meshviewer.json; cp /opt/data/siegburg1/01_meshviewer.json /opt/data/siegburg1/domain01/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg1.ffrsk.de/01_nodelist.json -O /opt/data/siegburg1/01_nodelist.json; if [ -s /opt/data/siegburg1/01_nodelist.json ]; then /opt/data/replace_wrong_geolocation_su.pl /opt/data/siegburg1/01_nodelist.json; cp /opt/data/siegburg1/01_nodelist.json /opt/data/siegburg1/domain01/nodelist.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg1.ffrsk.de/01_nodes.json -O /opt/data/siegburg1/01_nodes.json; if [ -s /opt/data/siegburg1/01_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/siegburg1/01_nodes.json /opt/data/siegburg1/domain01/nodes.json; fi >/dev/null 2>&1
+# 01 old v1 Versions for MobileMeshViewer
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg1.ffrsk.de/01_graph_v1.json -O /opt/data/siegburg1/01_graph_v1.json; if [ -s /opt/data/siegburg1/01_graph_v1.json ]; then cp /opt/data/siegburg1/01_graph_v1.json /opt/data/siegburg1/domain01/graph_v1.json; cp /opt/data/siegburg1/domain01/graph_v1.json /opt/data/merged/graph_v1.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg1.ffrsk.de/01_nodes_v1.json -O /opt/data/siegburg1/01_nodes_v1.json; if [ -s /opt/data/siegburg1/01_nodes.json ]; then /opt/data/replace_wrong_geolocation_su.pl /opt/data/siegburg1/01_nodes.json; /opt/data/jsoncheck.pl /opt/data/siegburg1/01_nodes_v1.json /opt/data/siegburg1/domain01/nodes_v1.json; cp /opt/data/siegburg1/domain01/nodes_v1.json /opt/data/merged/nodes_v1.json; fi >/dev/null 2>&1
+# siegburg2
+# 02
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_graph.json -O /opt/data/siegburg2/02_graph.json;  if [ -s /opt/data/siegburg2/02_graph.json ]; then cp /opt/data/siegburg2/02_graph.json /opt/data/siegburg2/domain02/graph.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_meshviewer.json -O /opt/data/siegburg2/02_meshviewer.json; if [ -s /opt/data/siegburg2/02meshviewer.json ]; then cp /opt/data/siegburg2/02meshviewer.json /opt/data/siegburg2/domain02/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_nodelist.json -O /opt/data/siegburg2/02_nodelist.json; if [ -s /opt/data/siegburg2/02_nodelist.json ]; then cp /opt/data/siegburg2/02_nodelist.json /opt/data/siegburg2/domain02/nodelist.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_nodes.json -O /opt/data/siegburg2/02_nodes.json; if [ -s /opt/data/siegburg2/02_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/siegburg2/02_nodes.json /opt/data/siegburg2/domain02/nodes.json; fi >/dev/null 2>&1
+# 02 old v1 Versions for MobileMeshViewer
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_graph_v1.json -O /opt/data/siegburg2/02_graph_v1.json; if [ -s /opt/data/siegburg2/02_graph_v1.json ]; then cp /opt/data/siegburg2/02_graph_v1.json /opt/data/siegburg2/domain02/graph_v1.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_nodes_v1.json -O /opt/data/siegburg2/02_nodes_v1.json; if [ -s  /opt/data/siegburg2/02_nodes_v1.json ]; then /opt/data/jsoncheck.pl /opt/data/siegburg2/02_nodes_v1.json /opt/data/siegburg2/domain02/nodes_v1.json; fi >/dev/null 2>&1
+# 05
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/05_graph.json -O /opt/data/siegburg2/05_graph.json; if [ -s  /opt/data/siegburg2/05_graph.json ]; then cp /opt/data/siegburg2/05_graph.json /opt/data/siegburg2/domain05/graph.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/05_meshviewer.json -O /opt/data/siegburg2/05_meshviewer.json; if [ -s /opt/data/siegburg2/05_meshviewer.json ]; then cp /opt/data/siegburg2/05_meshviewer.json /opt/data/siegburg2/domain05/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/05_nodelist.json -O /opt/data/siegburg2/05_nodelist.json; if [ -s /opt/data/siegburg2/05_nodelist.json ]; then cp /opt/data/siegburg2/05_nodelist.json /opt/data/siegburg2/domain05/nodelist.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/05_nodes.json -O /opt/data/siegburg2/05_nodes.json; if [ -s /opt/data/siegburg2/05_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/siegburg2/05_nodes.json /opt/data/siegburg2/domain05/nodes.json; fi >/dev/null 2>&1
+# 05 old v1 Versions for MobileMeshViewer
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/05_graph_v1.json -O /opt/data/siegburg2/05_graph_v1.json; if [ -s /opt/data/siegburg2/05_graph_v1.json ]; then cp /opt/data/siegburg2/05_graph_v1.json /opt/data/siegburg2/domain05/graph_v1.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/05_nodes_v1.json -O /opt/data/siegburg2/05_nodes_v1.json; if [ -s /opt/data/siegburg2/05_nodes_v1.json ]; then /opt/data/jsoncheck.pl /opt/data/siegburg2/05_nodes_v1.json /opt/data/siegburg2/domain05/nodes_v1.json; fi >/dev/null 2>&1
+
 
