@@ -20,7 +20,7 @@
 # siegburg2
 # 02
 */2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_graph.json -O /opt/data/siegburg2/02_graph.json;  if [ -s /opt/data/siegburg2/02_graph.json ]; then cp /opt/data/siegburg2/02_graph.json /opt/data/siegburg2/domain02/graph.json; fi >/dev/null 2>&1
-*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_meshviewer.json -O /opt/data/siegburg2/02_meshviewer.json; if [ -s /opt/data/siegburg2/02meshviewer.json ]; then cp /opt/data/siegburg2/02meshviewer.json /opt/data/siegburg2/domain02/meshviewer.json; fi >/dev/null 2>&1
+*/2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_meshviewer.json -O /opt/data/siegburg2/02_meshviewer.json; if [ -s /opt/data/siegburg2/02_meshviewer.json ]; then cp /opt/data/siegburg2/02_meshviewer.json /opt/data/siegburg2/domain02/meshviewer.json; fi >/dev/null 2>&1
 */2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_nodelist.json -O /opt/data/siegburg2/02_nodelist.json; if [ -s /opt/data/siegburg2/02_nodelist.json ]; then cp /opt/data/siegburg2/02_nodelist.json /opt/data/siegburg2/domain02/nodelist.json; fi >/dev/null 2>&1
 */2 * * * * root wget -U yanic_collector -q -4 http://siegburg2.ffrsk.de/02_nodes.json -O /opt/data/siegburg2/02_nodes.json; if [ -s /opt/data/siegburg2/02_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/siegburg2/02_nodes.json /opt/data/siegburg2/domain02/nodes.json; fi >/dev/null 2>&1
 # 02 old v1 Versions for MobileMeshViewer
