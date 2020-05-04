@@ -1,5 +1,5 @@
 #
-# cron.d/yanic_collector -- schedules periodic wget of yanic .json data
+# cron.d/yanic_voreifel_nodes -- schedules periodic wget of yanic .json data
 #
 # Copyright © technik <technik@freifunk-siegburg.de>
 # distributed under the terms of GPL 2.0
@@ -7,12 +7,12 @@
 
 # gw's mck/rhb
 # voreifel1
-#* * * * * root wget -U yanic_collector -q -4 http://voreifel1.freifunk-rhein-sieg.net:8080/graph.json -O /opt/data/voreifel1/15_graph.json; cp /opt/data/voreifel1/15_graph.json /opt/data/voreifel1/domain15/graph.json >/dev/null 2>&1
-#* * * * * root wget -U yanic_collector -q -4 http://voreifel1.freifunk-rhein-sieg.net:8080/meshviewer.json -O /opt/data/voreifel1/15_meshviewer.json; cp /opt/data/voreifel1/15_meshviewer.json /opt/data/voreifel1/domain15/meshviewer.json >/dev/null 2>&1
-#* * * * * root wget -U yanic_collector -q -4 http://voreifel1.freifunk-rhein-sieg.net:8080/nodelist.json -O /opt/data/voreifel1/15_nodelist.json; cp /opt/data/voreifel1/15_nodelist.json /opt/data/voreifel1/domain15/nodelist.json >/dev/null 2>&1
-#* * * * * root wget -U yanic_collector -q -4 http://voreifel1.freifunk-rhein-sieg.net:8080/nodes.json -O /opt/data/voreifel1/15_nodes.json; /opt/data/jsoncheck.pl /opt/data/voreifel1/15_nodes.json /opt/data/voreifel1/domain15/nodes.json >/dev/null 2>&1
+* * * * * root wget -U yanic_collector -q -4 http://voreifel1.freifunk-rhein-sieg.net:8080/graph.json -O /opt/data/voreifel1/15_graph.json; if [ -s /opt/data/voreifel1/15_graph.json ]; then cp /opt/data/voreifel1/15_graph.json /opt/data/voreifel1/domain15/graph.json; fi >/dev/null 2>&1
+* * * * * root wget -U yanic_collector -q -4 http://voreifel1.freifunk-rhein-sieg.net:8080/meshviewer.json -O /opt/data/voreifel1/15_meshviewer.json; if [ -s /opt/data/voreifel1/15_meshviewer.json ]; then cp /opt/data/voreifel1/15_meshviewer.json /opt/data/voreifel1/domain15/meshviewer.json; fi >/dev/null 2>&1
+* * * * * root wget -U yanic_collector -q -4 http://voreifel1.freifunk-rhein-sieg.net:8080/nodelist.json -O /opt/data/voreifel1/15_nodelist.json; if [ -s /opt/data/voreifel1/15_nodelist.json ]; then cp /opt/data/voreifel1/15_nodelist.json /opt/data/voreifel1/domain15/nodelist.json; fi >/dev/null 2>&1
+* * * * * root wget -U yanic_collector -q -4 http://voreifel1.freifunk-rhein-sieg.net:8080/nodes.json -O /opt/data/voreifel1/15_nodes.json; if [ -s /opt/data/voreifel1/15_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/voreifel1/15_nodes.json /opt/data/voreifel1/domain15/nodes.json; fi >/dev/null 2>&1
 # voreifel2
-#* * * * * root wget -U yanic_collector -q -4 http://voreifel2.freifunk-rhein-sieg.net:8080/graph.json -O /opt/data/voreifel2/15_graph.json; cp /opt/data/voreifel2/15_graph.json /opt/data/voreifel2/domain15/graph.json >/dev/null 2>&1
-#* * * * * root wget -U yanic_collector -q -4 http://voreifel2.freifunk-rhein-sieg.net:8080/meshviewer.json -O /opt/data/voreifel2/15_meshviewer.json; cp /opt/data/voreifel2/15_meshviewer.json /opt/data/voreifel2/domain15/meshviewer.json >/dev/null 2>&1
-#* * * * * root wget -U yanic_collector -q -4 http://voreifel2.freifunk-rhein-sieg.net:8080/nodelist.json -O /opt/data/voreifel2/15_nodelist.json; cp /opt/data/voreifel2/15_nodelist.json /opt/data/voreifel2/domain15/nodelist.json >/dev/null 2>&1
-#* * * * * root wget -U yanic_collector -q -4 http://voreifel2.freifunk-rhein-sieg.net:8080/nodes.json -O /opt/data/voreifel2/15_nodes.json; /opt/data/jsoncheck.pl /opt/data/voreifel2/15_nodes.json /opt/data/voreifel2/domain15/nodes.json >/dev/null 2>&1
+#* * * * * root wget -U yanic_collector -q -4 http://voreifel2.freifunk-rhein-sieg.net:8080/graph.json -O /opt/data/voreifel2/15_graph.json; if [ -s /opt/data/voreifel2/15_graph.json ]; then cp /opt/data/voreifel2/15_graph.json /opt/data/voreifel2/domain15/graph.json; fi >/dev/null 2>&1
+#* * * * * root wget -U yanic_collector -q -4 http://voreifel2.freifunk-rhein-sieg.net:8080/meshviewer.json -O /opt/data/voreifel2/15_meshviewer.json; if [ -s /opt/data/voreifel2/15_meshviewer.json ]; then cp /opt/data/voreifel2/15_meshviewer.json /opt/data/voreifel2/domain15/meshviewer.json; fi >/dev/null 2>&1
+#* * * * * root wget -U yanic_collector -q -4 http://voreifel2.freifunk-rhein-sieg.net:8080/nodelist.json -O /opt/data/voreifel2/15_nodelist.json; if [ -s /opt/data/voreifel2/15_nodelist.json ]; then cp /opt/data/voreifel2/15_nodelist.json /opt/data/voreifel2/domain15/nodelist.json; fi >/dev/null 2>&1
+#* * * * * root wget -U yanic_collector -q -4 http://voreifel2.freifunk-rhein-sieg.net:8080/nodes.json -O /opt/data/voreifel2/15_nodes.json; if [ -s /opt/data/voreifel2/15_nodes.json ]; then /opt/data/jsoncheck.pl /opt/data/voreifel2/15_nodes.json /opt/data/voreifel2/domain15/nodes.json; fi >/dev/null 2>&1
