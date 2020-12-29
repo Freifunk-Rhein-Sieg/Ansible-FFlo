@@ -14,11 +14,11 @@ meshviewer_path: "/var/www/{{ http_meshviewer_external }}"
 meshviewer_src: "/usr/src/meshviewer"
 
 map_layers:
-  - osm_mapnik_cached:
-    name: 'OpenStreetMap.Mapnik CACHED'
-    url: 'https://{{ http_meshviewer_external }}/tiles/{z}/{x}/{y}.png'
-    max_zoom: 19
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  - osm_freifunk_rsk:
+    name: 'Freifunk Rhein-Sieg'
+    url: 'https://tile.freifunk-rhein-sieg.net/tile/{z}/{x}/{y}.png'
+    max_zoom: 20
+    attribution: '<a href="https://freifunk-rhein-sieg.net/" target="_blank">&copy; Freifunk-Rhein-Sieg</a> <a href="http://www.openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap contributors</a>'
   - osm_mapnik:
     name: 'OpenStreetMap.Mapnik'
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
