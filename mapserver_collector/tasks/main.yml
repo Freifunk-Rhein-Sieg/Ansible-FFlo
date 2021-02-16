@@ -30,6 +30,8 @@
     - /opt/data/lohmar3/domain04
     - /opt/data/lohmar3/domain07
     - /opt/data/lohmar3/domain11
+    - /opt/data/rsk
+    - /opt/data/rsk/unifi
     - /opt/data/voreifel1
     - /opt/data/voreifel1/domain15
     - /opt/data/voreifel2
