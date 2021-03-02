@@ -1,0 +1,4 @@
+- name: install morutils package
+  package:
+    name: moreutils
+    state: present
