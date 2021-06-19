@@ -10,12 +10,16 @@ use DateTime;
 # define default runtime vars
 my $filename = $ARGV[0];
 my $destfilename = $filename.".new";
-my $erxnodes = "";
+my @erxnodes = "";
+my $erxcount = 0;
+my $erx = "";
 my $nodecounter_max = 0;
 my $nodesfound = 0;
+my $nodeid ="";
+my $nodeclients=0;
 # my $filename = "nodes.json";
 
-$erxnodes = "b4fbe4b1ac44";
+@erxnodes = "b4fbe4b1ac44";
 
 if ( ! $filename ) {
                 print "USAGE: ./reset_erx_clients.pl <filename>\n";
@@ -48,16 +52,42 @@ if ( -f $filename ){
                            $nodecounter_max++;
                         }
                         $nodecounter_max --;
-                        # print "Records: ".$nodecounter_max."\n";
+                        print "Records: ".$nodecounter_max."\n";
 
         ## Inner Loop
                  # Process array for each of nodecounter-max nodes:
                 for (my $i = 0; $i < $nodecounter_max; $i++){
                         # Nodes value parsing
 
-                        print $content->{'nodes'}->[$i]->{'statistics'}->{'node_id'}.':';
-                        print $content->{'nodes'}->[$i]->{'statistics'}->{'clients'}.' ';
+                        $nodeid =  $content->{'nodes'}->[$i]->{'statistics'}->{'node_id'};
+                        $nodeclients = $content->{'nodes'}->[$i]->{'statistics'}->{'clients'};
 
+                        # check if nodeid is ione of erxnodes
+                        $erxcount = 0;
+                        foreach $erx (@erxnodes) {
+                                ## matching nodeid = erxnode ?
+                                ## print 'searching for '.$erx.' ...';
+                                if ($nodeid eq $erx){
+                                  # print 'fount matching node '.$nodeid.;
+                                  # lets set clientcounter to 0
+                                  print 'Setting Clients for '.$nodeid.' from '.$nodeclients.' to 0'."\n";
+                                  $content->{'nodes'}->[$i]->{'statistics'}->{'clients'}=0;
+                                }
+                        }
+
+
+                }
+
+                ## debug content after processing
+
+                 # Process array for each of nodecounter-max nodes:
+                for (my $i = 0; $i < $nodecounter_max; $i++){
+                        # Nodes value parsing
+
+                        $nodeid =  $content->{'nodes'}->[$i]->{'statistics'}->{'node_id'};
+                        $nodeclients = $content->{'nodes'}->[$i]->{'statistics'}->{'clients'};
+
+                        print $nodeid.':'.$nodeclients."\n";
 
                 }
         ## End Inner Loop
@@ -73,3 +103,4 @@ if ( -f $filename ){
 
 
 exit 0;
+
