@@ -18,7 +18,7 @@ my $nodesfound = 0;
 $erxnodes = "b4fbe4b1ac44";
 
 if ( ! $filename ) {
-                print "USAGE: ./jsondump.pl <filename>\n";
+                print "USAGE: ./reset_erx_clients.pl <filename>\n";
                 exit 0;
         }
 
