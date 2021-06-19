@@ -22,7 +22,7 @@ my $nodeclients=0;
 my $jsontext;
 # my $filename = "nodes.json";
 
-@erxnodes = "b4fbe4b1ac44";
+@erxnodes = ('b4fbe4b1ac44', '7483c208d30e');
 
 if ( ! $filename ) {
                 print "USAGE: ./reset_erx_clients.pl <filename>\n";
@@ -115,7 +115,7 @@ if ( -f $filename ){
                         $erxcount = 0;
                         foreach $erx (@erxnodes) {
                                 ## matching nodeid = erxnode ?
-                                ## print 'searching for '.$erx.' ...';
+                                 print 'searching for '.$erx." ...\n";
                                 if ($nodeid eq $erx){
                                   # print 'fount matching node '.$nodeid.;
                                   # lets set clientcounter to 0
@@ -164,5 +164,6 @@ if ( -f $filename ){
 
 
 exit 0;
+
 
 
