@@ -23,7 +23,7 @@ my $nodeclients=0;
 my $jsontext;
 # my $filename = "nodes.json";
 
-@erxnodes = ('b4fbe4b1ac44', '7483c208d30e','7483c2f65916');
+@erxnodes = ('18e82924170a','18e829dcc37e','18e8295c534c','18e8292f7de6','18e82923f411','7483c2f6158a','18e82923ef3d','7483c20ad206','74acb9a21794','18e82923f1e9','7483c208c7e6','18e829ad9dca','7483c2f658f8','18e82923eee9','7483c2496bf4','7483c20ad15e','18e829ad9e78','98ded04c041a','7483c208bebc','18e8292363d8','18e82923f1e3','7483c208ca32','7483c2f90816','7483c2f6525c','74acb9a222da','74acb9a20588','7483c2f656d6','18e8295c5bb0','74acb9a16f7e','74acb9a16c2f');
 
 if ( ! $filename ) {
                 print "USAGE: ./reset_erx_clients.pl <filename>\n";
