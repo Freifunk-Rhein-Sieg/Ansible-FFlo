@@ -7,6 +7,7 @@ use JSON;
 use Data::Dumper;
 use DateTime;
 #use Date::Manip;
+use File::Copy;
 
 # define default runtime vars
 my $filename = $ARGV[0];
@@ -154,6 +155,9 @@ if ( -f $filename ){
 
                 close ($nl);
 
+                ## Lets move new file to old source
+                move ($destfilename, $filename) or die "The move operation failed: $!";
+
                 }
 
 ## End MAIN Loop
@@ -164,6 +168,5 @@ if ( -f $filename ){
 
 
 exit 0;
-
 
 
