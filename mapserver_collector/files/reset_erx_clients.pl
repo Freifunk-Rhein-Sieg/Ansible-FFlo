@@ -145,11 +145,10 @@ if ( -f $filename ){
 
              ## output json array to file
              $jsontext = encode_json($content);
-                ## output json should start with version and timestamp:
-                ## {"version":2,"timestamp":"2021-06-19T10:20:01+0200",## output json should start with version and timestamp:
+                ## output json should contain version and timestamp:
                 ## {"version":2,"timestamp":"2021-06-19T10:20:01+0200",
                 print "\n";
-                print $jsontext;
+                # print $jsontext;
 
                 print $nl $jsontext;
 
